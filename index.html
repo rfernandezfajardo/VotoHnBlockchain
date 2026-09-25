@@ -205,13 +205,77 @@ footer a{color:var(--menta-claro)}
 .credito img{width:52px;height:52px;border-radius:10px;object-fit:cover}
 .credito p{font-size:.84rem;color:#7E9BBC;margin:0}
 .credito b{color:#fff;display:block;font-weight:600}
+
+/* marcas en la barra superior */
+.nav-marcas{display:flex;align-items:center;gap:18px}
+.nav-marcas img{height:20px;width:auto;opacity:.95}
+.nav-marcas .unah{height:18px}
+.nav-marcas .sep{width:1px;height:18px;background:rgba(255,255,255,.22);display:block}
+/* las tres marcas se mantienen siempre; solo se reducen */
+@media (max-width:1000px){.nav-marcas{gap:14px}.nav-marcas img{height:18px}.nav-marcas .unah{height:16px}}
+@media (max-width:700px){.nav-marcas{gap:11px}.nav-marcas img{height:15px}.nav-marcas .unah{height:14px}
+  .nav-marcas .sep{height:14px}}
+@media (max-width:460px){.nav-marcas{gap:9px}.nav-marcas img{height:13px}.nav-marcas .unah{height:12px}}
+
+/* tarjetas de descarga */
+.pdf{position:relative;padding:30px 26px 28px;overflow:hidden}
+.pdf::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--violeta),var(--azul));opacity:0;transition:opacity .15s ease}
+.pdf:hover::before,.pdf:focus-visible::before{opacity:1}
+.pdf-ic{display:flex;align-items:center;justify-content:center;width:50px;height:50px;
+  border-radius:14px;background:#EDE7FB;margin-bottom:18px}
+.pdf-ic img{width:26px;height:26px;display:block}
+.pdf em{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:var(--violeta)}
+.pdf em::after{content:"";width:14px;height:14px;border-right:1.6px solid currentColor;
+  border-bottom:1.6px solid currentColor;transform:rotate(45deg) translate(-3px,-3px);opacity:.8}
+
+/* cierre del pie, centrado */
+.logos{justify-content:center;gap:34px;margin-top:44px;padding-top:32px}
+.credito{justify-content:center;text-align:left;margin-top:26px}
+.legal{margin:22px auto 0;text-align:center;max-width:62ch}
+@media (max-width:560px){
+  .logos{gap:22px}
+  .credito{flex-direction:column;text-align:center;gap:12px}
+}
+
+/* miniatura de la portada en cada tarjeta */
+.pdf{display:flex;flex-direction:column;padding-top:0}
+.portada{display:block;margin:-0px -26px 22px;overflow:hidden;background:#0B1B33;
+  border-bottom:1px solid rgba(23,19,57,.12)}
+.portada img{width:100%;display:block;object-fit:cover;object-position:top center;
+  aspect-ratio:16/10;transition:transform .35s ease}
+.pdf:hover .portada img,.pdf:focus-visible .portada img{transform:scale(1.04)}
+.pdf-ic{width:42px;height:42px;border-radius:12px;margin-bottom:14px}
+.pdf-ic img{width:22px;height:22px}
+.pdf em{margin-top:auto;padding-top:16px}
+@media (prefers-reduced-motion:reduce){.portada img{transition:none}}
+
+/* acciones de descarga */
+.pdf{cursor:default}
+.pdf:hover{transform:none;border-color:rgba(23,19,57,.13)}
+.pdf:hover::before{opacity:0}
+.pdf:hover .portada img{transform:none}
+.acciones{margin-top:auto;padding-top:20px;display:flex;flex-direction:column;gap:12px}
+.ac-p{display:inline-block;align-self:flex-start;background:var(--violeta);color:#fff;
+  text-decoration:none;font-size:.9rem;font-weight:600;padding:10px 18px;border-radius:8px;
+  transition:background .15s ease}
+.ac-p:hover,.ac-p:focus-visible{background:#5B21B6}
+.ac-img{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--texto-suave)}
+.ac-img a{color:var(--azul);text-decoration:none;border-bottom:1px solid rgba(14,95,164,.35);margin-left:6px}
+.ac-img a:hover,.ac-img a:focus-visible{border-bottom-color:var(--azul)}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-in">
-    <img src="assets/ujcv.png" alt="Universidad José Cecilio del Valle">
+    <div class="nav-marcas">
+      <img src="assets/ujcv.png" alt="Universidad José Cecilio del Valle">
+      <span class="sep"></span>
+      <img src="assets/cinnes.png" alt="CINNES 2026">
+      <span class="sep unah"></span>
+      <img class="unah" src="assets/unah.png" alt="UNAH · VRA · Dirección de Innovación Educativa">
+    </div>
     <nav>
       <a href="#sistema">El sistema</a>
       <a href="#aula">En el aula</a>
@@ -414,21 +478,45 @@ footer a{color:var(--menta-claro)}
         Innovación en Educación Superior.</p>
     </div>
     <div class="pdfs">
-      <a class="pdf" href="assets/trifolio-sistema.pdf" download>
+      <div class="pdf">
+        <span class="portada"><img src="assets/mini-sistema.jpg" alt="Portada del folleto: El sistema electoral"></span>
+        <span class="pdf-ic"><img src="assets/ic-cubo-v.png" alt=""></span>
         <b>El sistema electoral</b>
         <span>Cómo funciona la aplicación, sus garantías y el ejercicio nacional con los 18 departamentos.</span>
-        <em>PDF · carta horizontal</em>
-      </a>
-      <a class="pdf" href="assets/trifolio-ponencia.pdf" download>
+        <div class="acciones">
+          <a class="ac ac-p" href="assets/trifolio-sistema.pdf" download>Descargar PDF</a>
+          <span class="ac-img">JPG:
+            <a href="assets/folleto-sistema-exterior.jpg" download>cara exterior</a>
+            <a href="assets/folleto-sistema-interior.jpg" download>cara interior</a>
+          </span>
+        </div>
+      </div>
+      <div class="pdf">
+        <span class="portada"><img src="assets/mini-ponencia.jpg" alt="Portada del folleto: La ponencia académica"></span>
+        <span class="pdf-ic"><img src="assets/ic-aula-v.png" alt=""></span>
         <b>La ponencia académica</b>
         <span>Metodología en ocho etapas, instrumentos de medición, resultados y lecciones aprendidas.</span>
-        <em>PDF · carta horizontal</em>
-      </a>
-      <a class="pdf" href="assets/trifolio-guia.pdf" download>
+        <div class="acciones">
+          <a class="ac ac-p" href="assets/trifolio-ponencia.pdf" download>Descargar PDF</a>
+          <span class="ac-img">JPG:
+            <a href="assets/folleto-ponencia-exterior.jpg" download>cara exterior</a>
+            <a href="assets/folleto-ponencia-interior.jpg" download>cara interior</a>
+          </span>
+        </div>
+      </div>
+      <div class="pdf">
+        <span class="portada"><img src="assets/mini-guia.jpg" alt="Portada del folleto: Guía para entenderlo"></span>
+        <span class="pdf-ic"><img src="assets/ic-token-v.png" alt=""></span>
         <b>Guía para entenderlo</b>
         <span>Blockchain, tokens, contratos inteligentes y stablecoins explicados sin tecnicismos.</span>
-        <em>PDF · carta horizontal</em>
-      </a>
+        <div class="acciones">
+          <a class="ac ac-p" href="assets/trifolio-guia.pdf" download>Descargar PDF</a>
+          <span class="ac-img">JPG:
+            <a href="assets/folleto-guia-exterior.jpg" download>cara exterior</a>
+            <a href="assets/folleto-guia-interior.jpg" download>cara interior</a>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
