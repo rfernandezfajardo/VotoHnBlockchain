@@ -87,7 +87,7 @@ p{max-width:68ch}
 .btn-s:hover{border-color:#fff}
 
 /* ---------- secciones ---------- */
-section{padding:clamp(64px,9vw,110px) 0}
+section{padding:clamp(56px,7vw,88px) 0}
 .oscuro{background:var(--tinta-2);color:#fff}
 .oscuro p{color:var(--sobre-tinta)}
 .claro{background:var(--papel)}
@@ -176,13 +176,13 @@ footer a{color:var(--menta-claro)}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:center;
+.hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:center;
       background:#030D1F;overflow:hidden;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-2;
   background:url(assets/hero-mapa.jpg) no-repeat right center;background-size:cover;}
 .hero-veil{position:absolute;inset:0;z-index:-1;
   background:linear-gradient(90deg,#030D1F 14%,rgba(3,13,31,.92) 40%,rgba(3,13,31,.35) 78%,rgba(3,13,31,.55) 100%);}
-.hero-in{position:relative;padding:clamp(72px,11vw,120px) clamp(20px,5vw,48px)}
+.hero-in{position:relative;padding:clamp(56px,8vw,88px) clamp(20px,5vw,48px)}
 .hero-marcas{display:flex;align-items:center;gap:26px;margin-bottom:clamp(28px,5vw,44px)}
 .hero-marcas img{height:30px;width:auto}
 .hero-marcas .sep{width:1px;height:30px;background:rgba(255,255,255,.22)}
@@ -190,7 +190,7 @@ footer a{color:var(--menta-claro)}
   text-shadow:0 0 60px rgba(34,169,240,.35)}
 .hero .sub{font-size:clamp(1.02rem,1.9vw,1.24rem);color:var(--sobre-tinta);margin-top:22px;max-width:50ch}
 .hero-kicker{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:#4FE3FF;margin-bottom:18px}
-.metricas{display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,56px);margin-top:clamp(36px,6vw,56px);
+.metricas{display:flex;flex-wrap:wrap;gap:clamp(22px,4vw,48px);margin-top:clamp(28px,4vw,40px);
   padding-top:26px;border-top:1px solid rgba(79,227,255,.22)}
 .metricas div b{display:block;font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);
   color:#4FE3FF;line-height:1}
@@ -263,6 +263,24 @@ footer a{color:var(--menta-claro)}
 .ac-img{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--texto-suave)}
 .ac-img a{color:var(--azul);text-decoration:none;border-bottom:1px solid rgba(14,95,164,.35);margin-left:6px}
 .ac-img a:hover,.ac-img a:focus-visible{border-bottom-color:var(--azul)}
+
+/* visor flotante */
+.visor{position:fixed;inset:0;z-index:100;display:none;background:rgba(3,13,31,.92);
+  padding:clamp(14px,3vw,34px);flex-direction:column}
+.visor[open],.visor.abierto{display:flex}
+.visor-barra{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.visor-tit{color:#fff;font-family:"Space Grotesk",sans-serif;font-size:1rem;margin-right:auto}
+.visor-bt{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.28);
+  background:transparent;color:#fff;border-radius:8px;padding:9px 16px;font-size:.9rem;
+  font-family:inherit;cursor:pointer;text-decoration:none}
+.visor-bt:hover,.visor-bt:focus-visible{border-color:#4FE3FF;color:#4FE3FF}
+.visor-bt.principal{background:#4FE3FF;border-color:#4FE3FF;color:#06162E;font-weight:600}
+.visor-bt.principal:hover{background:#8bf3ff;color:#06162E}
+.visor-cuerpo{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;
+  background:#0B1B33;border-radius:10px;overflow:auto}
+.visor-cuerpo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.visor-cuerpo iframe{width:100%;height:100%;border:0;background:#fff}
+.portada{cursor:zoom-in}
 </style>
 </head>
 <body>
@@ -277,6 +295,7 @@ footer a{color:var(--menta-claro)}
       <img class="unah" src="assets/unah.png" alt="UNAH · VRA · Dirección de Innovación Educativa">
     </div>
     <nav>
+      <a href="#inicio">Inicio</a>
       <a href="#sistema">El sistema</a>
       <a href="#aula">En el aula</a>
       <a href="#aprender">Aprender</a>
@@ -285,7 +304,7 @@ footer a{color:var(--menta-claro)}
   </div>
 </header>
 
-<div class="hero">
+<div class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-veil"></div>
   <div class="wrap hero-in">
@@ -389,8 +408,8 @@ footer a{color:var(--menta-claro)}
         </ol>
       </div>
       <figure class="captura">
-        <img src="assets/aula.jpg" alt="Sesión en aula sobre entorno de pruebas y seguridad">
-        <figcaption>Sesión sobre entorno de pruebas, billeteras y trazabilidad.</figcaption>
+        <img src="assets/aula.jpg" alt="Confirmación en vivo de una transacción firmada en Sepolia durante una clase">
+        <figcaption>Confirmación en vivo de una transacción firmada desde MetaMask en la red Sepolia, durante una sesión de clase.</figcaption>
       </figure>
     </div>
 
@@ -484,10 +503,10 @@ footer a{color:var(--menta-claro)}
         <b>El sistema electoral</b>
         <span>Cómo funciona la aplicación, sus garantías y el ejercicio nacional con los 18 departamentos.</span>
         <div class="acciones">
-          <a class="ac ac-p" href="assets/trifolio-sistema.pdf" download>Descargar PDF</a>
+          <a class="ac ac-p" data-visor="pdf" href="assets/trifolio-sistema.pdf" >Ver y descargar PDF</a>
           <span class="ac-img">JPG:
-            <a href="assets/folleto-sistema-exterior.jpg" download>cara exterior</a>
-            <a href="assets/folleto-sistema-interior.jpg" download>cara interior</a>
+            <a data-visor="img" href="assets/folleto-sistema-exterior.jpg">cara exterior</a>
+            <a data-visor="img" href="assets/folleto-sistema-interior.jpg">cara interior</a>
           </span>
         </div>
       </div>
@@ -497,10 +516,10 @@ footer a{color:var(--menta-claro)}
         <b>La ponencia académica</b>
         <span>Metodología en ocho etapas, instrumentos de medición, resultados y lecciones aprendidas.</span>
         <div class="acciones">
-          <a class="ac ac-p" href="assets/trifolio-ponencia.pdf" download>Descargar PDF</a>
+          <a class="ac ac-p" data-visor="pdf" href="assets/trifolio-ponencia.pdf" >Ver y descargar PDF</a>
           <span class="ac-img">JPG:
-            <a href="assets/folleto-ponencia-exterior.jpg" download>cara exterior</a>
-            <a href="assets/folleto-ponencia-interior.jpg" download>cara interior</a>
+            <a data-visor="img" href="assets/folleto-ponencia-exterior.jpg">cara exterior</a>
+            <a data-visor="img" href="assets/folleto-ponencia-interior.jpg">cara interior</a>
           </span>
         </div>
       </div>
@@ -510,10 +529,10 @@ footer a{color:var(--menta-claro)}
         <b>Guía para entenderlo</b>
         <span>Blockchain, tokens, contratos inteligentes y stablecoins explicados sin tecnicismos.</span>
         <div class="acciones">
-          <a class="ac ac-p" href="assets/trifolio-guia.pdf" download>Descargar PDF</a>
+          <a class="ac ac-p" data-visor="pdf" href="assets/trifolio-guia.pdf" >Ver y descargar PDF</a>
           <span class="ac-img">JPG:
-            <a href="assets/folleto-guia-exterior.jpg" download>cara exterior</a>
-            <a href="assets/folleto-guia-interior.jpg" download>cara interior</a>
+            <a data-visor="img" href="assets/folleto-guia-exterior.jpg">cara exterior</a>
+            <a data-visor="img" href="assets/folleto-guia-interior.jpg">cara interior</a>
           </span>
         </div>
       </div>
@@ -556,5 +575,78 @@ footer a{color:var(--menta-claro)}
   </div>
 </footer>
 
+
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Vista del folleto">
+  <div class="visor-barra">
+    <span class="visor-tit" id="visor-tit"></span>
+    <a class="visor-bt principal" id="visor-bajar" href="#" download>Descargar</a>
+    <button class="visor-bt" id="visor-cerrar" type="button" aria-label="Cerrar">Cerrar ✕</button>
+  </div>
+  <div class="visor-cuerpo" id="visor-cuerpo"></div>
+</div>
+
+<script>
+(function () {
+  var visor = document.getElementById('visor');
+  var cuerpo = document.getElementById('visor-cuerpo');
+  var titulo = document.getElementById('visor-tit');
+  var bajar = document.getElementById('visor-bajar');
+  var cerrar = document.getElementById('visor-cerrar');
+  var previo = null;
+
+  function abrir(url, tipo, nombre) {
+    cuerpo.innerHTML = '';
+    if (tipo === 'pdf') {
+      var marco = document.createElement('iframe');
+      marco.src = url;
+      marco.title = nombre;
+      cuerpo.appendChild(marco);
+    } else {
+      var img = document.createElement('img');
+      img.src = url;
+      img.alt = nombre;
+      cuerpo.appendChild(img);
+    }
+    titulo.textContent = nombre;
+    bajar.href = url;
+    bajar.setAttribute('download', '');
+    visor.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+    cerrar.focus();
+  }
+
+  function cerrarVisor() {
+    visor.classList.remove('abierto');
+    cuerpo.innerHTML = '';
+    document.body.style.overflow = '';
+    if (previo) { previo.focus(); previo = null; }
+  }
+
+  document.querySelectorAll('[data-visor]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      previo = a;
+      var tarjeta = a.closest('.pdf');
+      var nombre = tarjeta ? tarjeta.querySelector('b').textContent : 'Folleto';
+      if (a.dataset.visor === 'img') nombre += ' · ' + a.textContent.trim();
+      abrir(a.getAttribute('href'), a.dataset.visor, nombre);
+    });
+  });
+
+  document.querySelectorAll('.pdf .portada').forEach(function (p) {
+    p.addEventListener('click', function () {
+      var tarjeta = p.closest('.pdf');
+      var jpg = tarjeta.querySelector('[data-visor="img"]');
+      if (jpg) { previo = p; abrir(jpg.getAttribute('href'), 'img', tarjeta.querySelector('b').textContent); }
+    });
+  });
+
+  cerrar.addEventListener('click', cerrarVisor);
+  visor.addEventListener('click', function (e) { if (e.target === visor) cerrarVisor(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && visor.classList.contains('abierto')) cerrarVisor();
+  });
+})();
+</script>
 </body>
 </html>
